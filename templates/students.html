@@ -43,8 +43,15 @@
         {% for row in student_list %}
         <tr>
           <td contenteditable="true"> {{ row.student_id }} </td>
-          <td contenteditable="true"> {{ row.first_name }} </td>
-          <td contenteditable="true"> {{ row.student_id }} </td>
+          <td contenteditable="true"> {{ row.Name }} </td>
+          <td contenteditable="true"> {{ row.cid }} </td>
+          <td>
+            <select id="action">
+              <option value="None">None</option>
+              <option value="Update">Update</option>
+              <option value="Delete">Delete</option>
+            </select>
+          </td>
         </tr>
         {% endfor %}
 <!--         <tr>

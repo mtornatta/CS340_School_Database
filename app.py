@@ -1,9 +1,30 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://cs340_tornattm:2266@classmysql.engr.oregonstate.edu:3306/cs340_tornattm'
+engine = create_engine('mysql+pymysql://cs340_tornattm:2266@classmysql.engr.oregonstate.edu:3306/cs340_tornattm')
 db = SQLAlchemy(app)
+
+# class school(db.Model):
+# 	first_name = db.Column(db.String(255))
+# 	last_name = db.Column(db.String(255))
+# 	student_id = db.Column(db.Integer, primary_key=True)
+# 	year = db.Column(db.Integer)
+# 	major = db.Column(db.String(255))
+# 	email = db.Column(db.String(255))
+# 	school_name = db.Column(db.String(255))
+
+# class teacher(db.Model):
+# 	first_name = db.Column(db.String(255))
+# 	last_name = db.Column(db.String(255))
+# 	student_id = db.Column(db.Integer, primary_key=True)
+# 	year = db.Column(db.Integer)
+# 	major = db.Column(db.String(255))
+# 	email = db.Column(db.String(255))
+# 	school_name = db.Column(db.String(255))
 
 class student(db.Model):
 	first_name = db.Column(db.String(255))
@@ -28,7 +49,7 @@ def teachers():
 
 @app.route('/students', methods=['POST','GET'])
 def students():
-	all_students = student.query.all()
+	all_students = db.engine.execute("SELECT student.student_id, concat(first_name,' ', last_name) AS Name, class_student.cid FROM student LEFT JOIN class_student ON student.student_id = class_student.sid;")
 	return render_template('students.html',student_list=all_students)
 
 @app.route('/schools')
