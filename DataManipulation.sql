@@ -37,6 +37,8 @@ UPDATE teacher SET teacher_id = ':teacher_id_input:' WHERE first_name = ':first_
 
 UPDATE student SET student_id = ':student_id_input:' WHERE first_name = ':course_name_input:';
 
+UPDATE student SET student_id = ':student_id_input:', first_name = ':student_fname_input', last_name = ':student_lname_input', year = ':student_year_input',  major = ':student_major_input', email = ':student_email_input', school_name = ':student_school_name_input' WHERE student_id = ':student_id_input:';
+
 UPDATE school SET division = ':division_input:' WHERE school_name = ':school_name_input:';
 
 UPDATE class_student SET sid = ':new_student_id_FK:', cid = ':new_course_id_FK:' WHERE sid = ':student_id_FK:';
@@ -48,7 +50,7 @@ DELETE FROM class WHERE course_id = ':course_id_input:';
 
 DELETE FROM teacher WHERE teacher_id = ':teacher_id_input:';
 
-DELETE FROM student WHERE student_id = ':student_id_input:';
+
 
 DELETE FROM school WHERE school_name = ':school_name_input:';
 
