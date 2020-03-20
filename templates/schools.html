@@ -31,15 +31,17 @@
         <input type="text" name="sarch" value="enter school name"><br><br>
         <input type="submit" value="Search">
       </form><br>
+      {% if school_list %}
       <table>
         <tr>
           <th>Name</th>
           <th>Division</th>
           <th>Action</th>
         </tr>
+        {% for row in school_list %}
         <tr>
-          <td>-</td>
-          <td contenteditable="true">-</td>
+          <td> {{ row.school_name }} </td>
+          <td contenteditable="true"> {{ row.division }} </td>
           <td>
             <select id="action">
               <option value="None">None</option>
@@ -48,7 +50,9 @@
             </select>
           </td>
         </tr>
+        {% endfor %}
       </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      {% endif %}
       <input type="submit" value="Update Table"><br><br>
       Add a school:<br>
       <form>

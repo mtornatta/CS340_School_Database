@@ -33,22 +33,23 @@
         <input type="text" name="sarch" value="enter class name"><br><br>
         <input type="submit" value="Search">
       </form><br>
+      {% if class_list %}
       <table>
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Teacher</th>
+          <th>Teacher ID</th>
           <th># of students</th>
           <th># of available seats</th>
           <th>Action</th>
         </tr>
+        {% for row in class_list %}
         <tr>
-          {% for user in userDetails %}
-          <td> {{user[0]}} </td>
-          <td> {{user[1]}} </td>
-          <td> {{user[2]}} </td>
-          <td> {{user[3]}} </td>
-          {% endfor %}
+          <td> {{ row.course_id }} </td>
+          <td contenteditable="true">  {{ row.course_name }} </td>
+          <td contenteditable="true"> {{ row.tid }} </td>
+          <td contenteditable="true"> {{ row.number_of_students }} </td>
+          <td contenteditable="true"> {{ row.available_seats }} </td>
           <td>
             <select id="action">
               <option value="None">None</option>
@@ -57,7 +58,9 @@
             </select>
           </td>
         </tr>
+        {% endfor %}
       </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      {% endif %}
       <input type="submit" value="Update Table"><br><br>
       Add a class:<br>
       <!--<form id="addclass" action="/add-class" method="POST">
