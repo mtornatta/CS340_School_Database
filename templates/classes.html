@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 
 <!-- Classes Page -->
@@ -94,4 +95,105 @@
     <script></script>
 
   </body>
+=======
+<!DOCTYPE html>
+
+<!-- Classes Page -->
+<html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <a href="/">Home</a>
+      <a href="/classes">Classes</a>
+      <a href="/teachers">Teacher Directory</a>
+      <a href="/students">Student Directory</a>
+      <a href="/schools">School Directory</a>
+    </nav>
+
+    <!-- Content Description -->
+    <section class="content">
+      <h1>CLASSES</h1><br>
+      Filter By:<br>
+      <form>
+        Class ID<br>
+        <input type="checkbox" name="class id" value="class id"><br>
+        Class Name<br>
+        <input type="checkbox" name="class name" value="class name"><br>
+        Teacher Name<br>
+        <input type="checkbox" name="teacher name" value="teacher"><br><br>
+        Search for class:<br><br>
+        Search<br>
+        <input type="text" name="sarch" value="enter class name"><br><br>
+        <input type="submit" value="Search">
+      </form><br>
+      {% if class_list %}
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Teacher ID</th>
+          <th># of students</th>
+          <th># of available seats</th>
+          <th>Action</th>
+        </tr>
+        {% for row in class_list %}
+        <tr>
+          <td> {{ row.course_id }} </td>
+          <td contenteditable="true">  {{ row.course_name }} </td>
+          <td contenteditable="true"> {{ row.tid }} </td>
+          <td contenteditable="true"> {{ row.number_of_students }} </td>
+          <td contenteditable="true"> {{ row.available_seats }} </td>
+          <td>
+            <select id="action">
+              <option value="None">None</option>
+              <option value="Update">Update</option>
+              <option value="Delete">Delete</option>
+            </select>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      {% endif %}
+      <input type="submit" value="Update Table"><br><br>
+      Add a class:<br>
+      <!--<form id="addclass" action="/add-class" method="POST">
+        Class Identification Number ->
+        <input type="text" name="class id input" value="class id input">
+        Class Name ->
+        <input type="text" name="class name input" value="class name input">
+        Available Seats ->
+        <input type="text" name="available seats input" value="# of seats input">
+        Teacher ->
+        <input type="text" name="teacher name input" value="class teacher input"><br>
+        <input type="submit" value="Submit Class">
+      </form>-->
+
+      <form method="POST" action="">
+        ID <input type="number" name="id_input" />
+        <br>
+        Name <input type="text" name="name_input" />
+        <br>
+        Number of Students <input type="text" name="student_input" />
+        <br>
+        Available Seats <input type="number" name="seats_input" />
+        <br>
+        Teacher <input type="text" name="teacher_input" />
+        <br>
+        <input type="submit">
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+    </footer>
+
+    <script></script>
+
+  </body>
+>>>>>>> 10d0f04f3fbe602edc6bd9da295b691c8fa7eeb4
 </html>

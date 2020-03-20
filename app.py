@@ -44,11 +44,13 @@ def index():
 
 @app.route('/classes')
 def classes():
-	return render_template('classes.html')
+	class_data = db.engine.execute("SELECT class.course_id, class.course_name, class_teacher.tid, class.number_of_students, class.available_seats FROM class LEFT JOIN class_teacher ON class.course_id = class_teacher.cid;")
+	return render_template('classes.html', class_list=class_data)
 
 @app.route('/teachers')
 def teachers():
-	return render_template('teachers.html')
+	teacher_data = db.engine.execute("SELECT teacher.teacher_id, concat(first_name, ' ', last_name) AS Name, class_teacher.cid FROM teacher LEFT JOIN class_teacher ON teacher.teacher_id = class_teacher.tid;")
+	return render_template('teachers.html',teacher_list=teacher_data)
 
 @app.route('/students', methods=["GET","POST"])
 def students():
@@ -65,7 +67,8 @@ def students():
 
 @app.route('/schools')
 def schools():
-	return render_template('schools.html')
+	school_data = db.engine.execute("SELECT school_name, division FROM school;")
+	return render_template('schools.html', school_list=school_data)
 
 if __name__ == "__main__":
 	app.run(debug=True)

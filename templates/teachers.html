@@ -31,17 +31,19 @@
         <input type="text" name="sarch" value="enter teacher name"><br><br>
         <input type="submit" value="Search">
       </form><br>
+      {% if teacher_list %}
       <table>
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th># of classes being taught</th>
+          <th>Classes being Taught ID</th>
           <th>Action</th>
         </tr>
+        {% for row in teacher_list %}
         <tr>
-          <td>-</td>
-          <td contenteditable="true">-</td>
-          <td contenteditable="true">-</td>
+          <td> {{ row.teacher_id }} </td>
+          <td contenteditable="true"> {{ row.Name }} </td>
+          <td contenteditable="true"> {{ row.cid }} </td>
           <td>
             <select id="action">
               <option value="None">None</option>
@@ -50,7 +52,9 @@
             </select>
           </td>
         </tr>
+        {% endfor %}
       </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      {% endif %}
       <input type="submit" value="Update Table"><br><br>
       Add a teacher:<br>
       <form>
