@@ -55,11 +55,11 @@
       {% endif %}
       <input type="submit" value="Update Table"><br><br>
       Add a school:<br>
-      <form>
+      <form method="POST" action="/schools">
         School Name ->
-        <input type="text" name="school name input" value="school name input">
+        <input type="text" name="school_name_input">
         School Division ->
-        <input type="text" name="school division input" value="school division input">
+        <input type="text" name="school_division_input">
         <input type="submit" value="Submit School">
       </form>
     </section>

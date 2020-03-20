@@ -57,13 +57,13 @@
       {% endif %}
       <input type="submit" value="Update Table"><br><br>
       Add a teacher:<br>
-      <form>
-        Teacher Identification Number ->
-        <input type="text" name="teacher id input" value="teacher id input">
-        Teacher Name ->
-        <input type="text" name="teacher name input" value="teacher name input">
-        # of classes being taught ->
-        <input type="text" name="teacher name input" value="teacher classes input"><br>
+      <form method="POST" action="/teachers">
+        Teacher First Name ->
+        <input type="text" name="teacher_fname_input">
+        Teacher Last Name ->
+        <input type="text" name="teacher_lname_input">
+        Teacher ID
+        <input type="text" name="teacher_id_input"><br>
         <input type="submit" value="Submit Teacher">
       </form>
     </section>

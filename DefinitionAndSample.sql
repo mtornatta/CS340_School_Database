@@ -25,9 +25,9 @@ CREATE TABLE student (
 
 INSERT INTO student (first_name, last_name, student_id, year, major, email, school_name) VALUES ('John', 'Smith', '123456', '1', 'Computer Science', 'johnsmith@email.com', (SELECT school_name FROM school)), ('Mary', 'Jane', '135246', '4', 'Mechanical Engineering', 'maryjane@email.com', (SELECT school_name FROM school)), ('Peter', 'Parker', '188333', '4', 'Film', 'peterparker@email.com', (SELECT school_name FROM school));
 
-DROP TABLE IF EXISTS class;
+DROP TABLE IF EXISTS course;
 
-CREATE TABLE class (
+CREATE TABLE course (
   course_id int NOT NULL,
   number_of_students int,
   available_seats int NOT NULL,
@@ -60,15 +60,15 @@ CREATE TABLE class_student (
   FOREIGN KEY (cid) REFERENCES class (course_id)
 );
 
-INSERT INTO class_student (sid, cid) VALUES ((SELECT student_id FROM student WHERE first_name = 'John'), (SELECT course_id FROM class WHERE course_name = 'MTH 101')), ((SELECT student_id FROM student WHERE first_name = 'John'), (SELECT course_id FROM class WHERE course_name = 'WR 214')), ((SELECT student_id FROM student WHERE first_name = 'Mary'), (SELECT course_id FROM class WHERE course_name = 'MTH 101')), ((SELECT student_id FROM student WHERE first_name = 'Mary'), (SELECT course_id FROM class WHERE course_name = 'WR 214')), ((SELECT student_id FROM student WHERE first_name = 'Peter'), (SELECT course_id FROM class WHERE course_name = 'MTH 101'));
+INSERT INTO class_student (sid, cid) VALUES ((SELECT student_id FROM student WHERE first_name = 'John'), (SELECT course_id FROM course WHERE course_name = 'MTH 101')), ((SELECT student_id FROM student WHERE first_name = 'John'), (SELECT course_id FROM course WHERE course_name = 'WR 214')), ((SELECT student_id FROM student WHERE first_name = 'Mary'), (SELECT course_id FROM course WHERE course_name = 'MTH 101')), ((SELECT student_id FROM student WHERE first_name = 'Mary'), (SELECT course_id FROM course WHERE course_name = 'WR 214')), ((SELECT student_id FROM student WHERE first_name = 'Peter'), (SELECT course_id FROM course WHERE course_name = 'MTH 101'));
 
 DROP TABLE IF EXISTS class_teacher;
 
 CREATE TABLE class_teacher (
   cid int NOT NULL,
   tid int NOT NULL,
-  FOREIGN KEY (cid) REFERENCES class (course_id),
+  FOREIGN KEY (cid) REFERENCES course (course_id),
   FOREIGN KEY (tid) REFERENCES teacher (teacher_id)
 );
 
-INSERT INTO class_teacher (cid, tid) VALUES ((SELECT course_id FROM class WHERE course_name = 'MTH 101'), (SELECT teacher_id FROM teacher WHERE first_name = 'Will')), ((SELECT course_id FROM class WHERE course_name = 'WR 214'), (SELECT teacher_id FROM teacher WHERE first_name = 'Damian'));
+INSERT INTO class_teacher (cid, tid) VALUES ((SELECT course_id FROM course WHERE course_name = 'MTH 101'), (SELECT teacher_id FROM teacher WHERE first_name = 'Will')), ((SELECT course_id FROM course WHERE course_name = 'WR 214'), (SELECT teacher_id FROM teacher WHERE first_name = 'Damian'));
