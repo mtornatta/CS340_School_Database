@@ -42,7 +42,6 @@
           <th>Major</th>
           <th>Email</th>
           <th>School</th>
-          <th>Action</th>
         </tr>
         {% for row in student_list %}
         <tr>
@@ -53,21 +52,16 @@
           <td contenteditable="true"> {{ row.major }} </td>
           <td contenteditable="true"> {{ row.email }} </td>
           <td contenteditable="true"> {{ row.school_name }} </td>
-
-          <td>
-            <select id="action">
-              <option value="None">None</option>
-              <option value="Update">Update</option>
-              <option value="Delete">Delete</option>
-            </select>
-          </td>
         </tr>
         {% endfor %}
-      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      </table>You can delete or update a student record using the fields below. Make sure to use the correct student ID.<br>
       {% endif %}
-      <input type="submit" value="Update Table"><br><br>
+      <form method="POST" action="/students">
+        Student ID for Deletion->
+        <input type="text" name="delete_student">
+      <input type="submit" value="Delete"><br><br>
 
-      Add a student:<br>
+      Add/Update a student:<br>
       <form method="POST" action="/students">
         Student ID ->
         <input type="text" name="student_id_input">
@@ -83,13 +77,15 @@
         <input type="text" name="student_email_input">
         Student School Name ->
         <input type="text" name="student_school_name_input">
+        Check button if you're updating a record ->
+        <input type="checkbox" name="update_toggle">
           <!--<option value="Oregon State University">Oregon State University</option>
           <option value="saab">Saab</option>
           <option value="fiat">Fiat</option>
         </select>-->
 
 
-        <input type="submit" value="Add">
+        <input type="submit" value="Add/Update">
       </form>
     </section>
 
