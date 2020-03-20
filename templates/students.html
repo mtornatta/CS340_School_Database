@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<!-- Students Page -->
+<html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <a href="/">Home</a>
+      <a href="classes">Classes</a>
+      <a href="teachers">Teacher Directory</a>
+      <a href="students">Student Directory</a>
+      <a href="schools">School Directory</a>
+    </nav>
+
+    <!-- Content Description -->
+    <section class="content">
+      <h1>STUDENTS</h1><br>
+      Filter By:<br>
+      <form>
+        Student ID<br>
+        <input type="checkbox" name="student id" value="student id"><br>
+        Student Name<br>
+        <input type="checkbox" name="student name" value="student name"><br><br>
+        Search for student:<br><br>
+        Search<br>
+        <input type="text" name="sarch" value="enter class name"><br><br>
+        <input type="submit" value="Search">
+      </form><br>
+
+      {% if student_list %}
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th># of registered classes</th>
+          <th>Action</th>
+        </tr>
+        {% for row in student_list %}
+        <tr>
+          <td contenteditable="true"> {{ row.student_id }} </td>
+          <td contenteditable="true"> {{ row.first_name }} </td>
+          <td contenteditable="true"> {{ row.student_id }} </td>
+        </tr>
+        {% endfor %}
+<!--         <tr>
+          <td>-</td>
+          <td contenteditable="true">-</td>
+          <td contenteditable="true">-</td>
+          <td>
+            <select id="action">
+              <option value="None">None</option>
+              <option value="Update">Update</option>
+              <option value="Delete">Delete</option>
+            </select>
+          </td>
+        </tr> -->
+      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      {% endif %}
+      <input type="submit" value="Update Table"><br><br>
+      Add a student:<br>
+      <form>
+        Student Identification Number ->
+        <input type="text" name="student id input" value="student id input">
+        Student Name ->
+        <input type="text" name="student name input" value="student name input">
+        # of registered classes ->
+        <input type="text" name="student classes input" value="student classes input"><br>
+        <input type="submit" value="Submit Student">
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+    </footer>
+
+    <script></script>
+
+  </body>
+</html>

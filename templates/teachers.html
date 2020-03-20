@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<!-- Teachers Page -->
+<html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+  <body>
+
+    <!-- Navigation Bar -->
+    <nav class="navigation">
+      <a href="/">Home</a>
+      <a href="classes">Classes</a>
+      <a href="teachers">Teacher Directory</a>
+      <a href="students">Student Directory</a>
+      <a href="schools">School Directory</a>
+    </nav>
+
+    <!-- Content Description -->
+    <section class="content">
+      <h1>TEACHERS</h1><br>
+      Filter By:<br>
+      <form>
+        Teacher ID<br>
+        <input type="checkbox" name="teacher id" value="teacher id"><br>
+        Teacher Name<br>
+        <input type="checkbox" name="teacher name" value="teacher name"><br><br>
+        Search for teacher:<br><br>
+        Search<br>
+        <input type="text" name="sarch" value="enter teacher name"><br><br>
+        <input type="submit" value="Search">
+      </form><br>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th># of classes being taught</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td contenteditable="true">-</td>
+          <td contenteditable="true">-</td>
+          <td>
+            <select id="action">
+              <option value="None">None</option>
+              <option value="Update">Update</option>
+              <option value="Delete">Delete</option>
+            </select>
+          </td>
+        </tr>
+      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      <input type="submit" value="Update Table"><br><br>
+      Add a teacher:<br>
+      <form>
+        Teacher Identification Number ->
+        <input type="text" name="teacher id input" value="teacher id input">
+        Teacher Name ->
+        <input type="text" name="teacher name input" value="teacher name input">
+        # of classes being taught ->
+        <input type="text" name="teacher name input" value="teacher classes input"><br>
+        <input type="submit" value="Submit Teacher">
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+    </footer>
+
+    <script></script>
+
+  </body>
+</html>

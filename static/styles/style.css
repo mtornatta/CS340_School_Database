@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+/* Style the top navigation bar */
+.navigation {
+  overflow: hidden;
+  background-color: #e67e22;
+}
+
+/* Style the navigation links */
+.navigation a {
+  float: left;
+  display: block;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change navigation tab color on hover */
+.navigation a:hover {
+  background-color: #bdc3c7;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  background-color: #ecf0f1;
+  padding: 10px;
+  height: 600px;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #bdc3c7;
+  padding: 10px;
+}
