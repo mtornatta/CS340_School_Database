@@ -36,15 +36,24 @@
       <table>
         <tr>
           <th>ID</th>
-          <th>Name</th>
-          <th># of registered classes</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Year</th>
+          <th>Major</th>
+          <th>Email</th>
+          <th>School</th>
           <th>Action</th>
         </tr>
         {% for row in student_list %}
         <tr>
           <td contenteditable="true"> {{ row.student_id }} </td>
-          <td contenteditable="true"> {{ row.Name }} </td>
-          <td contenteditable="true"> {{ row.cid }} </td>
+          <td contenteditable="true"> {{ row.first_name }} </td>
+          <td contenteditable="true"> {{ row.last_name }} </td>
+          <td contenteditable="true"> {{ row.year }} </td>
+          <td contenteditable="true"> {{ row.major }} </td>
+          <td contenteditable="true"> {{ row.email }} </td>
+          <td contenteditable="true"> {{ row.school_name }} </td>
+
           <td>
             <select id="action">
               <option value="None">None</option>
@@ -69,15 +78,30 @@
       </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
       {% endif %}
       <input type="submit" value="Update Table"><br><br>
+
       Add a student:<br>
-      <form>
-        Student Identification Number ->
-        <input type="text" name="student id input" value="student id input">
-        Student Name ->
-        <input type="text" name="student name input" value="student name input">
-        # of registered classes ->
-        <input type="text" name="student classes input" value="student classes input"><br>
-        <input type="submit" value="Submit Student">
+      <form method="POST" action="/students">
+        Student ID ->
+        <input type="text" name="student_id_input">
+        Student First Name ->
+        <input type="text" name="student_fname_input">
+        Student Last Name ->
+        <input type="text" name="student_lname_input">
+        Student Year ->
+        <input type="text" name="student_year_input">
+        Student Major ->
+        <input type="text" name="student_major_input">
+        Student Email ->
+        <input type="text" name="student_email_input">
+        Student School Name ->
+        <input type="text" name="student_school_name_input">
+          <!--<option value="Oregon State University">Oregon State University</option>
+          <option value="saab">Saab</option>
+          <option value="fiat">Fiat</option>-->
+        </select>
+
+
+        <input type="submit" value="Add">
       </form>
     </section>
 

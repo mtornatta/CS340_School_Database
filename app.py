@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 
@@ -35,6 +35,9 @@ class student(db.Model):
 	email = db.Column(db.String(255))
 	school_name = db.Column(db.String(255))
 
+	def __repr__(self):
+		return "<Title: {}>".format(self.first_name)
+
 @app.route('/')
 def index():
 	return render_template('index.html')
@@ -47,9 +50,17 @@ def classes():
 def teachers():
 	return render_template('teachers.html')
 
-@app.route('/students', methods=['POST','GET'])
+@app.route('/students', methods=["GET","POST"])
 def students():
-	all_students = db.engine.execute("SELECT student.student_id, concat(first_name,' ', last_name) AS Name, class_student.cid FROM student LEFT JOIN class_student ON student.student_id = class_student.sid;")
+	all_students = db.engine.execute("SELECT * FROM student;")
+
+	if request.form:
+		new_student=student(student_id=request.form.get("student_id_input"), first_name=request.form.get("student_fname_input"),
+		last_name=request.form.get("student_lname_input"), year=request.form.get("student_year_input"), major=request.form.get("student_major_input"), email=request.form.get("student_email_input"), school_name=request.form.get("student_school_name_input"))
+		db.session.add(new_student)
+		db.session.commit()
+		return(redirect('/students'))
+
 	return render_template('students.html',student_list=all_students)
 
 @app.route('/schools')
