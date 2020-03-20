@@ -20,42 +20,23 @@
     <!-- Content Description -->
     <section class="content">
       <h1>TEACHERS</h1><br>
-      Filter By:<br>
-      <form>
-        Teacher ID<br>
-        <input type="checkbox" name="teacher id" value="teacher id"><br>
-        Teacher Name<br>
-        <input type="checkbox" name="teacher name" value="teacher name"><br><br>
-        Search for teacher:<br><br>
-        Search<br>
-        <input type="text" name="sarch" value="enter teacher name"><br><br>
-        <input type="submit" value="Search">
-      </form><br>
       {% if teacher_list %}
       <table>
         <tr>
           <th>ID</th>
           <th>Name</th>
-          <th>Classes being Taught ID</th>
-          <th>Action</th>
+          <th>Classes being Taught ID</th>s
         </tr>
         {% for row in teacher_list %}
         <tr>
           <td> {{ row.teacher_id }} </td>
-          <td contenteditable="true"> {{ row.Name }} </td>
-          <td contenteditable="true"> {{ row.cid }} </td>
-          <td>
-            <select id="action">
-              <option value="None">None</option>
-              <option value="Update">Update</option>
-              <option value="Delete">Delete</option>
-            </select>
-          </td>
+          <td> {{ row.Name }} </td>
+          <td> {{ row.cid }} </td>
         </tr>
         {% endfor %}
-      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      </table><br>
       {% endif %}
-      <input type="submit" value="Update Table"><br><br>
+      <br>
       Add a teacher:<br>
       <form>
         Teacher Identification Number ->

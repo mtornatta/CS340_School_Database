@@ -20,19 +20,6 @@
     <!-- Content Description -->
     <section class="content">
       <h1>CLASSES</h1><br>
-      Filter By:<br>
-      <form>
-        Class ID<br>
-        <input type="checkbox" name="class id" value="class id"><br>
-        Class Name<br>
-        <input type="checkbox" name="class name" value="class name"><br>
-        Teacher Name<br>
-        <input type="checkbox" name="teacher name" value="teacher"><br><br>
-        Search for class:<br><br>
-        Search<br>
-        <input type="text" name="sarch" value="enter class name"><br><br>
-        <input type="submit" value="Search">
-      </form><br>
       {% if class_list %}
       <table>
         <tr>
@@ -41,27 +28,19 @@
           <th>Teacher ID</th>
           <th># of students</th>
           <th># of available seats</th>
-          <th>Action</th>
         </tr>
         {% for row in class_list %}
         <tr>
           <td> {{ row.course_id }} </td>
-          <td contenteditable="true">  {{ row.course_name }} </td>
-          <td contenteditable="true"> {{ row.tid }} </td>
-          <td contenteditable="true"> {{ row.number_of_students }} </td>
-          <td contenteditable="true"> {{ row.available_seats }} </td>
-          <td>
-            <select id="action">
-              <option value="None">None</option>
-              <option value="Update">Update</option>
-              <option value="Delete">Delete</option>
-            </select>
-          </td>
+          <td>  {{ row.course_name }} </td>
+          <td> {{ row.tid }} </td>
+          <td> {{ row.number_of_students }} </td>
+          <td> {{ row.available_seats }} </td>
         </tr>
         {% endfor %}
-      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      </table><br>
       {% endif %}
-      <input type="submit" value="Update Table"><br><br>
+      <br>
       Add a class:<br>
       <!--<form id="addclass" action="/add-class" method="POST">
         Class Identification Number ->

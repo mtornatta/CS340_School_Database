@@ -20,40 +20,21 @@
     <!-- Content Description -->
     <section class="content">
       <h1>SCHOOLS</h1><br>
-      Filter By:<br>
-      <form>
-        School Name<br>
-        <input type="checkbox" name="school name" value="school name"><br>
-        Division<br>
-        <input type="checkbox" name="school division" value="school division"><br><br>
-        Search for school:<br><br>
-        Search<br>
-        <input type="text" name="sarch" value="enter school name"><br><br>
-        <input type="submit" value="Search">
-      </form><br>
       {% if school_list %}
       <table>
         <tr>
           <th>Name</th>
           <th>Division</th>
-          <th>Action</th>
         </tr>
         {% for row in school_list %}
         <tr>
           <td> {{ row.school_name }} </td>
-          <td contenteditable="true"> {{ row.division }} </td>
-          <td>
-            <select id="action">
-              <option value="None">None</option>
-              <option value="Update">Update</option>
-              <option value="Delete">Delete</option>
-            </select>
-          </td>
+          <td> {{ row.division }} </td>
         </tr>
         {% endfor %}
-      </table>You can edit the data in the table and select an action to "update" or "delete" then press "Update Table" to finalize.<br>
+      </table><br>
       {% endif %}
-      <input type="submit" value="Update Table"><br><br>
+      <br>
       Add a school:<br>
       <form>
         School Name ->
